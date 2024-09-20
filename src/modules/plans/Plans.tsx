@@ -1,14 +1,45 @@
+import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 
+// import { Container } from '@/components/Container'
+import { Skeleton } from '@/components/Skeleton'
 import { Title } from '@/components/Title'
+import { CardPlanItem } from '@/modules/plans/components/CardPlanItem'
 import { CardTypePlan } from '@/modules/plans/components/CardTypePlan'
+import { getPlans } from '@/services/plans'
+import { getUser } from '@/services/users'
+import { calculateAge } from '@/utils/calculate-age'
+import { highlightPhrases } from '@/utils/highlight-keywords'
 
 export const Plans = () => {
-    const [selectedPlan, setSelectedPlan] = useState<'personal' | 'other'>(
-        'other'
-    )
+    const [selectedPlan, setSelectedPlan] = useState<
+        'personal' | 'other' | 'none'
+    >('none')
 
-    const userName = 'User name'
+    const { data, isLoading } = useQuery({
+        queryKey: ['user'],
+        queryFn: getUser,
+    })
+
+    const { data: dataPlans } = useQuery({
+        queryKey: ['plans'],
+        queryFn: getPlans,
+        enabled: selectedPlan !== 'none',
+    })
+
+    const userAge = calculateAge(data?.data.birthDay ?? '')
+
+    const filterPlans = dataPlans?.data.list
+        .filter((plan) => plan.age >= userAge)
+        .map((plan) => ({
+            ...plan,
+            description: highlightPhrases(plan.description),
+        }))
+
+    console.log({ filterPlans })
+
+    const hasDiscount = selectedPlan === 'other'
+
     return (
         <div className="flex flex-col gap-8">
             <div className="h-16 bg-blue-500 -px-6 md:-mx-[120px] justify-center items-center hidden md:flex">
@@ -16,10 +47,14 @@ export const Plans = () => {
             </div>
             <div className="grid grid-cols-4 md:grid-cols-12 gap-x-4 md:gap-x-8 text-center">
                 <div className="flex flex-col gap-2 md:col-start-4 md:col-end-10 col-span-4">
-                    <Title
-                        text={`${userName} ¿Para quién deseas cotizar?`}
-                        className="px-0 text-[28px]"
-                    />
+                    {isLoading ? (
+                        <Skeleton className="w-full h-16" />
+                    ) : (
+                        <Title
+                            text={`${data?.data.name} ¿Para quién deseas cotizar?`}
+                            className="px-0 text-[28px]"
+                        />
+                    )}
                     <p className="text-title">
                         Selecciona la opción que se ajuste más a tus
                         necesidades.
@@ -48,6 +83,50 @@ export const Plans = () => {
                     className="lg:col-start-7 lg:col-end-10 md:col-start-7 md:col-end-11"
                 />
             </div>
+            {/* <Container className="mb-16"> */}
+            {/* <div className="flex col-span-4  gap-8 md:col-start-1 md:col-end-13 lg:col-start-2 lg:col-end-12">
+                    {filterPlans?.map((plan) => (
+                        <CardPlanItem
+                            key={plan.name}
+                            title={plan.name}
+                            icon={
+                                plan.name.toLowerCase().includes('clínica')
+                                    ? '/icons/hospital.svg'
+                                    : '/icons/home.svg'
+                            }
+                            alt={
+                                plan.name.toLowerCase().includes('clínica')
+                                    ? 'hospital icon'
+                                    : 'home icon'
+                            }
+                            hasDiscount={hasDiscount}
+                            price={plan.price}
+                            description={plan.description}
+                        />
+                    ))}
+                </div> */}
+            <div className="flex flex-wrap gap-8 w-full justify-center mb-16">
+                {filterPlans?.map((plan) => (
+                    <CardPlanItem
+                        key={plan.name}
+                        title={plan.name}
+                        icon={
+                            plan.name.toLowerCase().includes('clínica')
+                                ? '/icons/hospital.svg'
+                                : '/icons/home.svg'
+                        }
+                        alt={
+                            plan.name.toLowerCase().includes('clínica')
+                                ? 'hospital icon'
+                                : 'home icon'
+                        }
+                        hasDiscount={hasDiscount}
+                        price={plan.price}
+                        description={plan.description}
+                    />
+                ))}
+            </div>
+            {/* </Container> */}
         </div>
     )
 }

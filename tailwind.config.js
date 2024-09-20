@@ -12,6 +12,7 @@ export default {
                 foreground: 'var(--foreground)',
                 // textPrimary: 'var(--text-primary)',
                 title: 'var(--title)',
+                subtitle: 'var(--subtitle)',
                 placeholder: 'var(--placeholder)',
                 linearGradient: 'var(--linear-gradient)',
                 border: 'var(--border)',

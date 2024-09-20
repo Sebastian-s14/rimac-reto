@@ -40,7 +40,7 @@ export const CardTypePlan = ({
                     checked && 'border-primary rounded-3xl'
                 )}
             >
-                <Card className="pb-10 gap-0 group-hover:cursor-pointer">
+                <Card className="pb-10 gap-0 group-hover:cursor-pointer shadow-card2 h-full">
                     {checked ? (
                         <img
                             src="/icons/radio-button.svg"
