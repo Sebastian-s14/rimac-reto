@@ -1,4 +1,6 @@
+import { BackButton } from '@/components/Button'
 import { Card } from '@/components/Card'
+import { Container } from '@/components/Container'
 import { Separator } from '@/components/Separator'
 import { Title } from '@/components/Title'
 
@@ -11,35 +13,44 @@ export const Summary = () => {
 
     return (
         <div className="flex flex-col gap-10 pt-4 pb-5">
-            <Title text="Resumen del seguro" />
-            <Card>
-                <div className="flex flex-col gap-2">
-                    <p className="text-[10px] font-black leading-4 tracking-[.8px]">
-                        PRECIOS CALCULADOS PARA:
-                    </p>
-                    <div className="flex gap-3 items-center">
-                        <img
-                            src="/icons/family.svg"
-                            alt="family icon"
-                            className="size-6"
-                        />
-                        <p className="text-primary font-bold text-xl leading-4 tracking-[.2px]">
-                            {userName}
-                        </p>
-                    </div>
+            <BackButton to="/planes" />
+            <Container>
+                <div className="md:col-start-2 md:col-end-12 col-span-4">
+                    <Title text="Resumen del seguro" />
                 </div>
-                <Separator />
-                <SummaryItem
-                    title="Responsable de pago"
-                    text1={`DNI: ${dni}`}
-                    text2={`Celular: ${celular}`}
-                />
-                <SummaryItem
-                    title="Plan elegido"
-                    text1={plan}
-                    text2={`Costo del Plan: ${costoPlan} al mes`}
-                />
-            </Card>
+            </Container>
+            <Container>
+                <div className="md:col-start-2 md:col-end-12 col-span-4">
+                    <Card>
+                        <div className="flex flex-col gap-2">
+                            <p className="text-[10px] font-black leading-4 tracking-[.8px]">
+                                PRECIOS CALCULADOS PARA:
+                            </p>
+                            <div className="flex gap-3 items-center">
+                                <img
+                                    src="/icons/family.svg"
+                                    alt="family icon"
+                                    className="size-6"
+                                />
+                                <p className="text-primary font-bold text-xl leading-4 tracking-[.2px]">
+                                    {userName}
+                                </p>
+                            </div>
+                        </div>
+                        <Separator />
+                        <SummaryItem
+                            title="Responsable de pago"
+                            text1={`DNI: ${dni}`}
+                            text2={`Celular: ${celular}`}
+                        />
+                        <SummaryItem
+                            title="Plan elegido"
+                            text1={plan}
+                            text2={`Costo del Plan: ${costoPlan} al mes`}
+                        />
+                    </Card>
+                </div>
+            </Container>
         </div>
     )
 }

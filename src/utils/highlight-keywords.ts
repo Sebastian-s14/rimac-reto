@@ -7,7 +7,7 @@ const keywords = [
     'más de 200 clínicas del país',
     'Un Chequeo preventivo general',
     'Vacunas',
-    'Incluye todos los beneficios del Plan en Casa. ',
+    'Incluye todos los beneficios del Plan en Casa.',
 ]
 
 export const highlightKeywords = (phrase: string) => {

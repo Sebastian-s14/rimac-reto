@@ -1,3 +1,4 @@
+import { Badge } from '@/components/Badge'
 import { Separator } from '@/components/Separator'
 import { Form } from '@/modules/home/components/Form'
 
@@ -6,7 +7,10 @@ export const Home = () => {
         <div>
             <div className="flex justify-between col-span-4 md:col-span-12 md:hidden gap-3">
                 <div className="self-center">
-                    <h1 className="font-bold text-xs">Seguro salud flexible</h1>
+                    {/* <h1 className="font-bold text-xs">Seguro salud flexible</h1> */}
+                    <Badge variant="secondary" className="text-xs">
+                        Seguro de salud flexible
+                    </Badge>
                     <h2 className="text-[28px] font-bold leading-9">
                         Creado para ti y tu familia
                     </h2>

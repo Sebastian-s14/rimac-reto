@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 
-// import { Container } from '@/components/Container'
+import { BackButton } from '@/components/Button'
 import { Skeleton } from '@/components/Skeleton'
 import { Title } from '@/components/Title'
 import { CardPlanItem } from '@/modules/plans/components/CardPlanItem'
@@ -36,15 +36,14 @@ export const Plans = () => {
             description: highlightPhrases(plan.description),
         }))
 
-    console.log({ filterPlans })
-
-    const hasDiscount = selectedPlan === 'other'
+    const hasDiscount: boolean = selectedPlan === 'other'
 
     return (
         <div className="flex flex-col gap-8">
             <div className="h-16 bg-blue-500 -px-6 md:-mx-[120px] justify-center items-center hidden md:flex">
                 Stepper
             </div>
+            <BackButton to="/" />
             <div className="grid grid-cols-4 md:grid-cols-12 gap-x-4 md:gap-x-8 text-center">
                 <div className="flex flex-col gap-2 md:col-start-4 md:col-end-10 col-span-4">
                     {isLoading ? (
@@ -61,7 +60,7 @@ export const Plans = () => {
                     </p>
                 </div>
             </div>
-            <div className="flex flex-col gap-4 lg:gap-8 md:gap-6 md:grid md:grid-cols-12">
+            <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
                 <CardTypePlan
                     id="checkbox-plan-personal"
                     checked={selectedPlan === 'personal'}
@@ -123,6 +122,7 @@ export const Plans = () => {
                         hasDiscount={hasDiscount}
                         price={plan.price}
                         description={plan.description}
+                        isRecommended={plan.name === 'Plan en Casa y Clínica'}
                     />
                 ))}
             </div>

@@ -35,7 +35,7 @@ export const CardTypePlan = ({
             <label
                 htmlFor={id}
                 className={cn(
-                    'flex w-full group flex-col border-transparent border-[3px] hover:border-primary hover:border-[3px] hover:rounded-3xl',
+                    'flex group flex-col border-transparent border-[3px] hover:border-primary hover:border-[3px] hover:rounded-3xl md:w-[256px] h-[212px] w-full',
                     className,
                     checked && 'border-primary rounded-3xl'
                 )}
@@ -52,19 +52,12 @@ export const CardTypePlan = ({
                     )}
                     <div className="flex flex-col gap-2">
                         <div className="flex gap-2 md:flex-col">
-                            <img
-                                // src="/icons/add-user.svg"
-                                src={icon}
-                                alt={alt}
-                                className="size-8"
-                            />
+                            <img src={icon} alt={alt} className="size-8" />
                             <p className="text-title font-bold text-xl leading-6">
                                 {title}
                             </p>
                         </div>
                         <p className="text-xs leading-5 text-title">
-                            {/* Realiza una cotización para uno de tus familiares o
-                            cualquier persona. */}
                             {description}
                         </p>
                     </div>

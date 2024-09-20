@@ -25,6 +25,9 @@ export default {
             gridTemplateColumns: {
                 custom: 'repeat(12, 64px)',
             },
+            backgroundImage: {
+                'linear-gradient': 'var(--linear-gradient)',
+            },
         },
     },
     plugins: [],
