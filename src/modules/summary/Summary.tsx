@@ -10,7 +10,7 @@ export const Summary = () => {
     const costoPlan = '$99'
 
     return (
-        <div className="col-span-4 md:col-span-12 flex flex-col gap-10 pt-4 pb-5">
+        <div className="flex flex-col gap-10 pt-4 pb-5">
             <Title text="Resumen del seguro" />
             <Card>
                 <div className="flex flex-col gap-2">
@@ -29,25 +29,37 @@ export const Summary = () => {
                     </div>
                 </div>
                 <Separator />
-                <div className="flex flex-col gap-1">
-                    <p className="font-bold text-base text-primary leading-6">
-                        Responsable de pago
-                    </p>
-                    <p className="text-primary text-sm leading-6">DNI: {dni}</p>
-                    <p className="text-primary text-sm leading-6">
-                        Celular: {celular}
-                    </p>
-                </div>
-                <div className="flex flex-col gap-1">
-                    <p className="font-bold text-base text-primary leading-6">
-                        Plan elegido
-                    </p>
-                    <p className="text-primary text-sm leading-6">{plan}</p>
-                    <p className="text-primary text-sm leading-6">
-                        Costo del Plan: {costoPlan} al mes
-                    </p>
-                </div>
+                <SummaryItem
+                    title="Responsable de pago"
+                    text1={`DNI: ${dni}`}
+                    text2={`Celular: ${celular}`}
+                />
+                <SummaryItem
+                    title="Plan elegido"
+                    text1={plan}
+                    text2={`Costo del Plan: ${costoPlan} al mes`}
+                />
             </Card>
+        </div>
+    )
+}
+
+export const SummaryItem = ({
+    title,
+    text1,
+    text2,
+}: {
+    title: string
+    text1: string
+    text2: string
+}) => {
+    return (
+        <div className="flex flex-col gap-1">
+            <p className="font-bold text-base text-primary leading-6">
+                {title}
+            </p>
+            <p className="text-primary text-sm leading-6">{text1}</p>
+            <p className="text-primary text-sm leading-6">{text2}</p>
         </div>
     )
 }

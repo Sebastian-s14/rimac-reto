@@ -1,6 +1,6 @@
 import { cn } from '@/utils'
 
-export const Card = ({
+export const Container = ({
     children,
     className,
 }: {
@@ -10,7 +10,7 @@ export const Card = ({
     return (
         <div
             className={cn(
-                'shadow-card rounded-3xl px-6 py-4 flex flex-col gap-4',
+                'grid grid-cols-4 md:grid-cols-12 gap-x-4 md:gap-x-8',
                 className
             )}
         >

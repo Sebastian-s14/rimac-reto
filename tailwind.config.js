@@ -15,9 +15,14 @@ export default {
                 placeholder: 'var(--placeholder)',
                 linearGradient: 'var(--linear-gradient)',
                 border: 'var(--border)',
+                checkbox: 'var(--checkbox)',
             },
             boxShadow: {
                 card: '0px 1px 24px 0px #AEACF340',
+                card2: '0px 1px 32px 0px #AEACF359',
+            },
+            gridTemplateColumns: {
+                custom: 'repeat(12, 64px)',
             },
         },
     },
