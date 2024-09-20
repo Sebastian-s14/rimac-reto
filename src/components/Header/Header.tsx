@@ -5,19 +5,26 @@ export const Header = () => {
                 <div>
                     <img src="/logo.png" alt="logo" />
                 </div>
-                <div className="flex gap-x-3 items-center">
+                <div className="flex gap-4 items-center">
                     <span className="text-sm font-semibold hidden md:block">
                         ¡Compra por este medio!
                     </span>
-                    <a
-                        target="_blank"
-                        rel="noreferrer"
-                        translate="no"
-                        href="tel:014116006"
-                        className="font-bold md:text-lg"
-                    >
-                        (01) 411 6006
-                    </a>
+                    <div className="flex gap-2 items-center">
+                        <img
+                            src="/icons/telephone.svg"
+                            alt="telephone icon"
+                            className="size-5"
+                        />
+                        <a
+                            target="_blank"
+                            rel="noreferrer"
+                            translate="no"
+                            href="tel:014116006"
+                            className="font-bold md:text-lg"
+                        >
+                            (01) 411 6006
+                        </a>
+                    </div>
                 </div>
             </div>
         </header>

@@ -1,9 +1,10 @@
 import { Button } from '@/components/Button'
+import { Separator } from '@/components/Separator'
 
 export const Home = () => {
     return (
         <div className="col-span-4 md:col-span-12">
-            <div className="flex justify-between col-span-4 md:col-span-12 md:hidden">
+            <div className="flex justify-between col-span-4 md:col-span-12 md:hidden gap-3">
                 <div className="self-center">
                     <h1 className="font-bold text-xs">Seguro salud flexible</h1>
                     <h2 className="text-[28px] font-bold leading-9">
@@ -23,14 +24,10 @@ export const Home = () => {
                     /> */}
                 </div>
             </div>
-            <Separator />
+            <Separator className="my-6" />
             <Form />
         </div>
     )
-}
-
-export const Separator = () => {
-    return <div className="h-[1px] bg-border my-6 md:hidden"></div>
 }
 
 export const Form = () => {
@@ -87,14 +84,14 @@ export const Form = () => {
                     </a>
                 </div>
             </div>
-            <div className="self-center">
+            {/* <div className="self-center">
+            </div> */}
                 <Button
                     variant="primary"
-                    className="text-lg md:text-xl h-14 md:h-16"
+                    className="text-lg md:text-xl h-14 md:h-16 w-full md:max-w-[183px]"
                 >
                     Cotiza aquí
                 </Button>
-            </div>
         </div>
     )
 }

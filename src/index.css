@@ -6,14 +6,15 @@
 @layer base {
   :root {
     font-family: 'Lato', sans-serif;
+    background-color: #FAFBFF;
     --color-primary: #03050F;
     --color-secondary: #FF1C44;
     --hightlight-primary: #7DF0BA;
     --hightlight-secondary: #4F4FFF;
     --background: #FAFBFF;
     --foreground: #EDEFFC;
-    /* --text-primary: #0A051E;
-    --text-secondary: #141938; */
+    /* --text-primary: #0A051E; */
+    --title: #141938;
     --placeholder: #5E6488;
     --linear-gradient: linear-gradient(86.01deg, #00F4E2 100%, #00FF7F 100%);
     --border: #CCD1EE;
