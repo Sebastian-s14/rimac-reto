@@ -3,10 +3,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Home } from '@/modules/home/Home'
 import { Plans } from '@/modules/plans/Plans'
 import { Summary } from '@/modules/summary/Summary'
-import { MainLayout } from './components/Layouts/MainLayout'
+import { BasicLayout, MainLayout } from './components/Layouts/MainLayout'
 
 const router = createBrowserRouter([
     {
+        path: '/',
+        // index: true,
         element: <MainLayout />,
         children: [
             {
@@ -14,6 +16,11 @@ const router = createBrowserRouter([
                 index: true,
                 element: <Home />,
             },
+        ],
+    },
+    {
+        element: <BasicLayout />,
+        children: [
             {
                 path: '/planes',
                 element: <Plans />,

@@ -39,10 +39,7 @@ export const Plans = () => {
     const hasDiscount: boolean = selectedPlan === 'other'
 
     return (
-        <div className="flex flex-col gap-8">
-            <div className="h-16 bg-blue-500 -px-6 md:-mx-[120px] justify-center items-center hidden md:flex">
-                Stepper
-            </div>
+        <div className="flex flex-col gap-8 pt-4">
             <BackButton to="/" />
             <div className="grid grid-cols-4 md:grid-cols-12 gap-x-4 md:gap-x-8 text-center">
                 <div className="flex flex-col gap-2 md:col-start-4 md:col-end-10 col-span-4">
