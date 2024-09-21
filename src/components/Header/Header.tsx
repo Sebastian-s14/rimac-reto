@@ -1,6 +1,7 @@
 export const Header = () => {
     return (
-        <header className="h-14 grid grid-cols-4 md:grid-cols-12 gap-x-4 md:gap-x-8">
+        // <header className="h-14 grid grid-cols-4 md:grid-cols-12 gap-x-4 md:gap-x-8">
+        <header className="h-14 grid grid-cols-4 md:grid-cols-12 gap-x-4 md:gap-x-8 md:px-[120px] px-6">
             <div className="flex justify-between w-full col-span-4 md:col-span-12 items-center">
                 <div>
                     <img src="/logo.png" alt="logo" />

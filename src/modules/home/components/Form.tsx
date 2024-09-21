@@ -43,7 +43,6 @@ export const Form = () => {
         formState: { errors },
     } = useForm<FormData>({
         resolver: zodResolver(formDataSchema),
-        mode: 'onChange',
         defaultValues: {
             document: '',
             cellphone: '',
@@ -52,8 +51,6 @@ export const Form = () => {
         },
     })
 
-    console.log({ errors })
-
     const onSubmit: SubmitHandler<FormData> = (data) => {
         console.log({ data })
         navigate('/planes')
@@ -61,7 +58,7 @@ export const Form = () => {
 
     return (
         <form
-            className="flex flex-col gap-6 max-w-[350px]"
+            className="flex flex-col gap-6 md:max-w-[350px] mb-16 w-full"
             onSubmit={handleSubmit(onSubmit)}
         >
             <p className="text-primary font-semibold leading-5 text-sm tracking-[.2px]">
@@ -75,7 +72,7 @@ export const Form = () => {
                             <option value="DNI">DNI</option>
                             <option value="CE">CE</option>
                         </select>
-                        <div className="relative">
+                        <div className="relative w-full">
                             <label
                                 htmlFor="document"
                                 className="absolute px-4 text-title text-xs pt-1 leading-4"
@@ -121,9 +118,9 @@ export const Form = () => {
                     <div className="flex gap-3">
                         <input
                             type="checkbox"
-                            id="privacyPolicy"
                             className="accent-primary"
                             {...register('privacyPolicy')}
+                            id="privacyPolicy"
                         />
                         <label
                             htmlFor="privacyPolicy"
