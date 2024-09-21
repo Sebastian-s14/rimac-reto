@@ -3,13 +3,18 @@ import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import { Separator } from '@/components/Separator'
 import { Title } from '@/components/Title'
+import { useSummaryStore } from '@/store/store'
 
 export const Summary = () => {
-    const userName = 'User name'
-    const dni = '444888888'
-    const celular = '5130216147'
-    const plan = 'Plan en Casa y Clínica'
-    const costoPlan = '$99'
+    // const userName = 'User name'
+    // const dni = '444888888'
+    // const celular = '5130216147'
+    // const plan = 'Plan en Casa y Clínica'
+    // const costoPlan = '$99'
+
+    const { userName, cellphone, document, planName, price } = useSummaryStore(
+        (state) => state.summaryData
+    )
 
     return (
         <div className="flex flex-col gap-10 pt-4 pb-5">
@@ -40,13 +45,13 @@ export const Summary = () => {
                         <Separator />
                         <SummaryItem
                             title="Responsable de pago"
-                            text1={`DNI: ${dni}`}
-                            text2={`Celular: ${celular}`}
+                            text1={`DNI: ${document}`}
+                            text2={`Celular: ${cellphone}`}
                         />
                         <SummaryItem
                             title="Plan elegido"
-                            text1={plan}
-                            text2={`Costo del Plan: ${costoPlan} al mes`}
+                            text1={planName}
+                            text2={`Costo del Plan: $${price} al mes`}
                         />
                     </Card>
                 </div>

@@ -1,42 +1,19 @@
-import { useQuery } from '@tanstack/react-query'
-import { useState } from 'react'
-
 import { BackButton } from '@/components/Button'
 import { Skeleton } from '@/components/Skeleton'
 import { Title } from '@/components/Title'
 import { CardPlanItem } from '@/modules/plans/components/CardPlanItem'
 import { CardTypePlan } from '@/modules/plans/components/CardTypePlan'
-import { getPlans } from '@/services/plans'
-import { getUser } from '@/services/users'
-import { calculateAge } from '@/utils/calculate-age'
-import { highlightPhrases } from '@/utils/highlight-keywords'
+import { usePlans } from './hooks/usePlans'
 
 export const Plans = () => {
-    const [selectedPlan, setSelectedPlan] = useState<
-        'personal' | 'other' | 'none'
-    >('none')
-
-    const { data, isLoading } = useQuery({
-        queryKey: ['user'],
-        queryFn: getUser,
-    })
-
-    const { data: dataPlans } = useQuery({
-        queryKey: ['plans'],
-        queryFn: getPlans,
-        enabled: selectedPlan !== 'none',
-    })
-
-    const userAge = calculateAge(data?.data.birthDay ?? '')
-
-    const filterPlans = dataPlans?.data.list
-        .filter((plan) => plan.age >= userAge)
-        .map((plan) => ({
-            ...plan,
-            description: highlightPhrases(plan.description),
-        }))
-
-    const hasDiscount: boolean = selectedPlan === 'other'
+    const {
+        userName,
+        isLoading,
+        filterPlans,
+        hasDiscount,
+        selectedPlan,
+        setSelectedPlan,
+    } = usePlans()
 
     return (
         <div className="flex flex-col gap-8 pt-4">
@@ -47,7 +24,7 @@ export const Plans = () => {
                         <Skeleton className="w-full h-16" />
                     ) : (
                         <Title
-                            text={`${data?.data.name} ¿Para quién deseas cotizar?`}
+                            text={`${userName} ¿Para quién deseas cotizar?`}
                             className="px-0 text-[28px]"
                         />
                     )}
@@ -61,7 +38,7 @@ export const Plans = () => {
                 <CardTypePlan
                     id="checkbox-plan-personal"
                     checked={selectedPlan === 'personal'}
-                    onChange={() => setSelectedPlan('personal')}
+                    onChange={() => setSelectedPlan({ planType: 'personal' })}
                     icon="/icons/user-protection.svg"
                     alt="for me icon"
                     title="Para mi"
@@ -71,7 +48,7 @@ export const Plans = () => {
                 <CardTypePlan
                     id="checkbox-plan-other"
                     checked={selectedPlan === 'other'}
-                    onChange={() => setSelectedPlan('other')}
+                    onChange={() => setSelectedPlan({ planType: 'other' })}
                     icon="/icons/add-user.svg"
                     alt="for me icon"
                     title="Para alguien más"

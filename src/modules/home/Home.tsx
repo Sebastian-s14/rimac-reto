@@ -32,11 +32,6 @@ export const Home = () => {
                                 alt="image home mobile"
                                 className="rounded-lg w-full h-auto min-h-40 min-w-32 block md:hidden"
                             />
-                            {/* <img
-                            src="/image-home-desktop.png"
-                            alt="image home desktop"
-                            className="rounded-lg w-full h-auto min-h-[560px] max-w-[480px] hidden md:block"
-                        /> */}
                         </div>
                     </div>
                     <Separator className="my-6" />

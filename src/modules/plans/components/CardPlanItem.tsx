@@ -1,9 +1,11 @@
+import { useNavigate } from 'react-router-dom'
+
 import { Badge } from '@/components/Badge'
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Separator } from '@/components/Separator'
+import { useSummaryStore } from '@/store/store'
 import { cn } from '@/utils'
-import { useNavigate } from 'react-router-dom'
 
 const DISCOUNT = 0.95
 
@@ -27,6 +29,11 @@ export const CardPlanItem = ({
     isRecommended,
 }: CardPlanItemProps) => {
     const navigate = useNavigate()
+
+    const updateSummaryData = useSummaryStore(
+        (state) => state.updateSummaryData
+    )
+
     const finalPrice = hasDiscount ? price * DISCOUNT : price
 
     return (
@@ -85,6 +92,10 @@ export const CardPlanItem = ({
                     variant="secondary"
                     className="w-full"
                     onClick={() => {
+                        updateSummaryData({
+                            price: finalPrice,
+                            planName: title,
+                        })
                         navigate('/resumen')
                     }}
                 >
