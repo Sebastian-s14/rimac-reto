@@ -9,9 +9,9 @@ export const Home = () => {
             <div className="flex md:pt-8 pb-28 justify-center items-center">
                 <div className="max-w-[480px]  max-h-[560px] w-full hidden md:block">
                     <img
-                        src="/image-home-desktop.png"
+                        src="/image-home-desktop.webp"
                         alt="image home desktop"
-                        className="rounded-lg w-full h-full "
+                        className="rounded-lg w-full h-full"
                     />
                 </div>
                 <div className="md:ml-8 lg:ml-32">

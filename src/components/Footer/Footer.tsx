@@ -2,7 +2,7 @@ import { Separator } from '@/components/Separator'
 
 export const Footer = () => {
     return (
-        <footer className="bg-primary h-[152px] md:h-[106px] ">
+        <footer className="bg-primary h-[152px] md:h-[106px] z-20">
             <div className="py-8 flex justify-between items-center md:px-[120px] px-6 flex-col md:flex-row bg-primary">
                 <img
                     src="/logo-white.png"
