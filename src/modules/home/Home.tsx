@@ -19,7 +19,7 @@ export const Home = () => {
                         <div className="self-center flex flex-col gap-4">
                             <div>
                                 <Badge variant="secondary" className="text-xs">
-                                    Seguro de salud flexible
+                                    Seguro Salud Flexible
                                 </Badge>
                             </div>
                             <h2 className="text-[28px] font-bold leading-9">
